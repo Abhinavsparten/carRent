@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
 import { GrAppsRounded } from "react-icons/gr";
 import { FaRegQuestionCircle, FaRegHeart } from "react-icons/fa";
 import { BsBoxSeam } from "react-icons/bs";
@@ -7,17 +7,29 @@ import { CiCalendar } from "react-icons/ci";
 import { LuBell } from "react-icons/lu";
 import { IoIosLogOut } from "react-icons/io";
 
-const Sidebar: React.FC = () => {
-  const [activeButton, setActiveButton] = useState<string>(''); // Keep track of the active button
+type SidebarProps = {
+  isMenuOpen: boolean; 
+};
+
+const Sidebar: React.FC<SidebarProps> = ({ isMenuOpen }) => {
+  const [activeButton, setActiveButton] = useState<string>(''); 
 
   const handleButtonClick = (buttonName: string) => {
     setActiveButton(buttonName);
   };
 
+  useEffect(() => {
+    if (!isMenuOpen) {
+      setActiveButton('');
+    }
+  }, [isMenuOpen]);
+
   return (
-    <div className="hidden lg:flex p-6 h-full flex flex-col justify-between ">
+    <div
+      className={`lg:flex p-6 h-full flex-col justify-between ${isMenuOpen ? 'block' : 'hidden'}`}
+    >
       {/* Top Icons */}
-      <div className=" space-y-7 flex flex-col">
+      <div className="space-y-7 flex flex-col">
         <button
           onClick={() => handleButtonClick('apps')}
           className={`sidebar-btn ${activeButton === 'apps' ? 'active-btn' : 'inactive-btn'} px-3 py-2`}
@@ -51,7 +63,7 @@ const Sidebar: React.FC = () => {
       </div>
 
       {/* Bottom Icons */}
-      <div className=" space-y-7 flex flex-col">
+      <div className="space-y-7 flex flex-col">
         <button
           onClick={() => handleButtonClick('bell')}
           className={`sidebar-btn ${activeButton === 'bell' ? 'active-btn' : 'inactive-btn'} px-3 py-2`}

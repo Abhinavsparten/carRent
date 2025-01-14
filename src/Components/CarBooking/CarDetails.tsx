@@ -45,7 +45,7 @@ const CarDetails: React.FC<CarDetailsProps> = ({
       {Object.entries(carDetails).map(([key, value]) => (
         <div className="flex justify-between mt-4 lg:mt-8 md:mt-8 px-6" key={key}>
           <p className="lg:text-lg md:text-lg text-sm capitalize">{key}:</p>
-          <p className={`text-lg font-semibold ${key === "color" ? "text-blue-600" : ""}`}>
+          <p className={`lg:text-lg md:text-lg text-sm capitalize font-semibold ${key === "color" ? "text-blue-600" : ""}`}>
             {value}
           </p>
         </div>

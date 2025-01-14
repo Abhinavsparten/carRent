@@ -1,12 +1,19 @@
 import React from "react";
+import { FaBars, FaMoon } from "react-icons/fa";
 import { CiLocationOn } from "react-icons/ci";
-import { FaMoon, FaBars } from "react-icons/fa";
 
-const Header: React.FC = () => {
+type HeaderProps = {
+  onMenuClick: () => void; // Function to handle the menu click
+};
+
+const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
   return (
     <div className="p-3 border-0 dark:bg-dark-800 flex items-center justify-between">
       {/* Menu Icon */}
-      <button className="text-gray-800 dark:text-white lg:hidden">
+      <button
+        className="text-gray-800 dark:text-white lg:hidden"
+        onClick={onMenuClick} // Call the passed function when the button is clicked
+      >
         <FaBars size={24} />
       </button>
 
@@ -47,7 +54,7 @@ const Header: React.FC = () => {
         <div className="flex items-center space-x-6">
           <div className="text-lg flex gap-1 text-gray-500 dark:text-white flex items-center">
             <CiLocationOn size={24} />
-            <span >New York, US</span>
+            <span>New York, US</span>
           </div>
 
           <div className="flex items-center space-x-3">
