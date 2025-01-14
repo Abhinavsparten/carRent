@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaHeart } from "react-icons/fa";
 
 interface CarCardProps {
   name: string;
@@ -6,29 +7,35 @@ interface CarCardProps {
   year: number;
   pricePerHour: number;
   isAvailable: boolean;
-  imageUrl: string;
+  image: string;
 }
 
-const Card: React.FC<CarCardProps> = ({ name, model, year, pricePerHour, isAvailable, imageUrl }) => {
+const Card: React.FC<CarCardProps> = ({ name, model, year, pricePerHour, isAvailable, image }) => {
   return (
     <div className="border relative rounded-3xl p-4 bg-white dark:bg-gray-800">
-      <img src={imageUrl} alt={`${name} ${model}`} className=" w-full h-32 object-cover rounded-md" />
+      <img 
+        src={image} 
+        alt={`${name} ${model}`} 
+        className="w-full h-40 object-cover rounded-md" 
+        onError={(e) => e.currentTarget.src = 'fallback-image-url.jpg'} // Optional: Use a fallback image in case of error
+      />
       <div className="mt-4">
-      <h3 className=" font-semibold text-gray-500 dark:text-gray-100">
-          {model} 
-        </h3>
+        <h3 className="font-semibold text-gray-500 dark:text-gray-100">{name}</h3>
         <div className='flex justify-between'>
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-          {name} , {year}
-        </h3>
-        <p className="text-lg font-semibold text-gray-900 dark:text-gray-100">${pricePerHour}/hour</p>
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+            {model}, {year}
+          </h3>
+          <p className="text-lg font-semibold text-gray-900 dark:text-gray-100">${pricePerHour}/hour</p>
         </div>
         <span
-          className={`inline-block absolute top-1 mt-2 px-5 py-2 text-sm font-medium rounded-xl ${
-            isAvailable ? 'bg-green-400 text-white  ' : 'bg-gray-400 text-white '
+          className={`inline-block absolute top-5 left-8 mt-2 px-5 py-2 text-sm font-medium rounded-2xl ${
+            isAvailable ? 'bg-green-500 text-white' : 'bg-gray-400 text-white'
           }`}
         >
           {isAvailable ? 'Available' : 'Booked'}
+        </span>
+        <span className="absolute top-6 right-7 text-blue-400 text-sm px-2 py-2 rounded-full">
+          <FaHeart size={22} />
         </span>
       </div>
     </div>

@@ -2,4 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+/* styles.css */
+@layer components {
+    .sidebar-btn {
+      @apply inline-flex justify-center items-center rounded-2xl w-20;
+    }
+    .active-btn {
+      @apply bg-black text-white;
+    }
+    .inactive-btn {
+      @apply bg-transparent text-black;
+    }
+    .logout-btn {
+      @apply text-red-600 font-bold;
+    }
+  }
+  
 
