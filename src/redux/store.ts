@@ -1,17 +1,15 @@
-// redux/store.ts
 import { configureStore } from '@reduxjs/toolkit';
-import sidebarReducer from './sidebarSlice.ts';
-import carsReducer from './carsSlice.ts';
+import carsReducer from './carsSlice.ts'; 
+import selectedCarReducer from './selectedCarSlice.ts'; 
 
 const store = configureStore({
   reducer: {
-    sidebar: sidebarReducer,
     cars: carsReducer,
+    selectedCar: selectedCarReducer, 
   },
 });
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 
-// Default export
 export default store;

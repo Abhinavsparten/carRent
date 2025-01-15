@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';  // To provide Redux store to your app
 import store from './redux/store.ts';
 
 
+
 // Get the root element where your React app will be rendered
 const rootElement = document.getElementById('root') as HTMLElement;
 

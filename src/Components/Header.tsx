@@ -22,8 +22,8 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
         Starcar✨
       </div>
 
-      {/* Moon Icon for Theme Toggle - Hidden on Large Screens */}
-      <button className="text-gray-800 dark:text-white ml-4 lg:hidden">
+     
+      <button className="text-gray-800 dark:text-white ml-4 lg:hidden ">
         <FaMoon size={24} />
       </button>
 
@@ -51,19 +51,19 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
         </div>
 
         {/* Location and User Avatar in one line */}
-        <div className="flex items-center space-x-6">
-          <div className="text-lg flex gap-1 text-gray-500 dark:text-white flex items-center">
+        <div className="flex items-center space-x-6 shrink-0 ">
+          <div className=" text-lg flex gap-1 text-gray-500 dark:text-white flex items-center">
             <CiLocationOn size={24} />
-            <span>New York, US</span>
+            <span className=''>New York, US</span>
           </div>
 
-          <div className="flex items-center space-x-3">
+          <div className="flex space-x-6 ">
             <img
               src="https://i.postimg.cc/MKyZPpqP/png-clipart-user-icon-foreigners-avatar-child-face.png"
               className="rounded-full w-14"
               alt="User Avatar"
             />
-            <span className="text-gray-900 font-bold dark:text-white text-lg">
+            <span className=" mt-3 text-gray-900 font-bold dark:text-white text-lg">
               Nancy Holloway
             </span>
           </div>

@@ -16,6 +16,16 @@
     .logout-btn {
       @apply text-red-600 font-bold;
     }
+    
+  }
+
+  
+  .button-active-focus {
+    @apply active:bg-blue-600 focus:bg-blue-600 focus:text-white active:text-white;
+  }
+
+  .checkbox-input {
+    @apply mr-1 w-6 h-6 border-2 border-gray-500 rounded-full appearance-none focus:outline-none;
   }
   
 

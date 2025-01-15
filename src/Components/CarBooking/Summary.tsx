@@ -16,7 +16,7 @@ const Summary: React.FC<SummaryProps> = ({ totalSummary, onRentCar }) => (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
       <div>
         <label className="block text-md font-bold">Pick-up date and time</label>
-        <div className="mt-3 flex flex-col sm:flex-row gap-2 bg-gray-800 text-white rounded-2xl p-2 text-sm">
+        <div className="mt-3 flex flex-col sm:flex-row md:flex-row gap-2 bg-gray-800 text-white rounded-2xl p-2 text-sm">
           <input
             type="date"
             // value={pickUpDate}
@@ -34,7 +34,7 @@ const Summary: React.FC<SummaryProps> = ({ totalSummary, onRentCar }) => (
 
       <div>
         <label className="block text-md font-bold">Drop-off date and time</label>
-        <div className="mt-3 flex flex-col sm:flex-row gap-2 bg-gray-800 text-white rounded-2xl p-2 text-sm">
+        <div className="mt-3 flex flex-col sm:flex-row md:flex-row lg:flex-row gap-2 bg-gray-800 text-white rounded-2xl p-2 text-sm">
           <input
             type="date"
             // value={dropOffDate}
