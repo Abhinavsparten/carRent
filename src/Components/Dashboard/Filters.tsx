@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setFilters, resetFilters } from "../../redux/filterSlice.ts"; // Adjust the path accordingly
-import { setSelectedColor, resetColorFilter } from "../../redux/colorFilterSlice.ts"; // Use setSelectedColor
-import { RootState } from "../../redux/store.ts"; // Import RootState
+import { setFilters, resetFilters } from "../../redux/filterSlice.ts"; 
+import { setSelectedColor, resetColorFilter } from "../../redux/colorFilterSlice.ts";
+import { RootState } from "../../redux/store.ts"; 
 
 
 const Filters: React.FC = () => {
@@ -16,7 +16,7 @@ const Filters: React.FC = () => {
   const [loadingModels, setLoadingModels] = useState(false);
 
   useEffect(() => {
-    // Populate makes based on available car data
+    
     const uniqueMakes = Array.from(new Set(cars.map((car: any) => car.make)));
     setMakes(uniqueMakes);
   }, [cars]);
@@ -51,7 +51,7 @@ const Filters: React.FC = () => {
 
   const handleMakeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedMake = e.target.value;
-    dispatch(setFilters({ ...filters, selectedMake })); // Update Redux state
+    dispatch(setFilters({ ...filters, selectedMake })); 
   };
 
   const handleModelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -60,11 +60,11 @@ const Filters: React.FC = () => {
   };
 
   const handleReset = () => {
-    dispatch(resetFilters()); // Reset filters to initial state
-    dispatch(resetColorFilter()); // Reset selected colors
+    dispatch(resetFilters());
+    dispatch(resetColorFilter()); 
   };
   const handleColorChange = (color: string) => {
-    dispatch(setSelectedColor(color)); // Toggle the color selection
+    dispatch(setSelectedColor(color));
   };
 
   return (
@@ -159,8 +159,8 @@ const Filters: React.FC = () => {
                 type="checkbox"
                 className="checkbox-input w-6 h-6 text-blue-600 bg-gray-100  
                 rounded focus:bg-blue-500 focus:ring-2"
-                checked={selectedColor === color} // Check if this color is selected
-                onChange={() => handleColorChange(color)} // Handle color selection
+                checked={selectedColor === color} 
+                onChange={() => handleColorChange(color)} 
               />
               <span>{color}</span>
             </label>

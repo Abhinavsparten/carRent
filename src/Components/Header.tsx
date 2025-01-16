@@ -5,7 +5,7 @@ import { CiLocationOn } from 'react-icons/ci';
 type HeaderProps = {
   onMenuClick: () => void; // Function to handle the menu click
   onThemeToggle: () => void; // Function to handle theme toggle
-  isDarkMode: boolean; // Indicates if dark mode is active
+  isDarkMode: boolean; 
 };
 
 const Header: React.FC<HeaderProps> = ({ onMenuClick, onThemeToggle, isDarkMode }) => {
@@ -14,7 +14,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, onThemeToggle, isDarkMode 
       {/* Menu Icon */}
       <button
         className="text-gray-800 dark:text-white lg:hidden "
-        onClick={onMenuClick} // Call the passed function when the button is clicked
+        onClick={onMenuClick} 
         aria-label="Toggle Menu"
       >
         <FaBars size={24} />
@@ -28,7 +28,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, onThemeToggle, isDarkMode 
       {/* Theme Toggle Button */}
       <button
         className="text-gray-800 dark:text-white ml-4 lg:hidden"
-        onClick={onThemeToggle} // Call the theme toggle function when clicked
+        onClick={onThemeToggle}
         aria-label="Toggle Theme"
       >
         {isDarkMode ? '☀️' : <FaMoon size={24} />}

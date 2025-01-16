@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import Card from './Card.tsx'; // Import the CarCard component
-import { RootState } from '../../redux/store.ts'; // Import RootState for accessing Redux store
+import Card from './Card.tsx'; 
+import { RootState } from '../../redux/store.ts'; 
 
 interface Car {
   id: number;
@@ -12,12 +12,12 @@ interface Car {
   isAvailable: boolean;
   image: string;
   make: string;
-  color: string; // Add color property to match car's color
+  color: string;
 }
 
 interface CarListingsProps {
   cars: Car[];
-  onCardClick: (id: number) => void; // Receive onCardClick function
+  onCardClick: (id: number) => void; 
 }
 
 const CarListings: React.FC<CarListingsProps> = ({ cars, onCardClick }) => {
@@ -40,15 +40,15 @@ const CarListings: React.FC<CarListingsProps> = ({ cars, onCardClick }) => {
         filteredCars.map((car, index) => (
           <div key={index}>
             <Card
-              id={car.id}  // Pass id to the Card component
-              name={car.name} // Make sure to use correct properties
+              id={car.id} 
+              name={car.name} 
               model={car.model}
               make={car.make}
               year={car.year}
               price={car.price}
               isAvailable={car.isAvailable}
               image={car.image}
-              onCardClick={onCardClick} // Pass the onCardClick handler
+              onCardClick={onCardClick}
             />
           </div>
         ))
