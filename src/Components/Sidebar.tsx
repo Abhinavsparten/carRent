@@ -28,7 +28,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isMenuOpen, toggleMenu }) => {
 
   return (
     <div
-      className={`fixed top-0 left-0 h-full w-34 bg-white z-50 transform transition-transform duration-300 ${
+      className={`dark:text-gray-100 dark:bg-gray-800 fixed top-0 left-0 h-full w-34 bg-white z-50 transform transition-transform duration-300 ${
         isMenuOpen ? "translate-x-0" : "-translate-x-full"
       } lg:relative lg:translate-x-0 lg:w-auto`}
     >
@@ -40,12 +40,12 @@ const Sidebar: React.FC<SidebarProps> = ({ isMenuOpen, toggleMenu }) => {
         <AiOutlineClose size={20} />
       </button>
 
-      <div className="p-6 h-full flex flex-col justify-between">
+      <div className=" dark:text-gray-100 p-6 h-full flex flex-col justify-between">
         {/* Top Icons */}
         <div className="space-y-7 flex flex-col">
           <button
             onClick={() => handleButtonClick("apps")}
-            className={`sidebar-btn ${
+            className={`dark:text-gray-100 sidebar-btn ${
               activeButton === "apps" ? "active-btn" : "inactive-btn"
             } px-3 py-2`}
           >
@@ -53,7 +53,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isMenuOpen, toggleMenu }) => {
           </button>
           <button
             onClick={() => handleButtonClick("car")}
-            className={`sidebar-btn ${
+            className={`dark:text-gray-100 sidebar-btn ${
               activeButton === "car" ? "active-btn" : "inactive-btn"
             } px-3 py-2`}
           >
@@ -61,7 +61,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isMenuOpen, toggleMenu }) => {
           </button>
           <button
             onClick={() => handleButtonClick("calendar")}
-            className={`sidebar-btn ${
+            className={`dark:text-gray-100 sidebar-btn ${
               activeButton === "calendar" ? "active-btn" : "inactive-btn"
             } px-3 py-2`}
           >
@@ -69,7 +69,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isMenuOpen, toggleMenu }) => {
           </button>
           <button
             onClick={() => handleButtonClick("heart")}
-            className={`sidebar-btn ${
+            className={`dark:text-gray-100 sidebar-btn ${
               activeButton === "heart" ? "active-btn" : "inactive-btn"
             } px-3 py-2`}
           >
@@ -77,7 +77,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isMenuOpen, toggleMenu }) => {
           </button>
           <button
             onClick={() => handleButtonClick("box")}
-            className={`sidebar-btn ${
+            className={`dark:text-gray-100 sidebar-btn ${
               activeButton === "box" ? "active-btn" : "inactive-btn"
             } px-3 py-2`}
           >
@@ -89,7 +89,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isMenuOpen, toggleMenu }) => {
         <div className="space-y-7 flex flex-col">
           <button
             onClick={() => handleButtonClick("bell")}
-            className={`sidebar-btn ${
+            className={`dark:text-gray-100 sidebar-btn ${
               activeButton === "bell" ? "active-btn" : "inactive-btn"
             } px-3 py-2`}
           >
@@ -97,7 +97,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isMenuOpen, toggleMenu }) => {
           </button>
           <button
             onClick={() => handleButtonClick("question")}
-            className={`sidebar-btn ${
+            className={`dark:text-gray-100 sidebar-btn ${
               activeButton === "question" ? "active-btn" : "inactive-btn"
             } px-3 py-2`}
           >
@@ -105,7 +105,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isMenuOpen, toggleMenu }) => {
           </button>
           <button
             onClick={() => handleButtonClick("settings")}
-            className={`sidebar-btn ${
+            className={`dark:text-gray-100 sidebar-btn ${
               activeButton === "settings" ? "active-btn" : "inactive-btn"
             } px-3 py-2`}
           >
@@ -113,7 +113,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isMenuOpen, toggleMenu }) => {
           </button>
           <button
             onClick={() => handleButtonClick("logout")}
-            className={`sidebar-btn ${
+            className={`dark:text-gray-100 sidebar-btn ${
               activeButton === "logout" ? "active-btn" : "inactive-btn"
             } logout-btn px-3 py-2`}
           >

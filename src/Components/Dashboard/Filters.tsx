@@ -1,76 +1,90 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setFilters, resetFilters } from "../../redux/filterSlice.ts"; // Adjust the path accordingly
 
-interface Car {
-  id: number;
-  name: string;
-  model: string;
-  year: number;
-  price: number;
-  isAvailable: boolean;
-  image: string;
-  make: string;
-}
+const Filters: React.FC = () => {
+  const dispatch = useDispatch();
+  const cars = useSelector((state: any) => state.cars.cars); // List of all cars
+  const filters = useSelector((state: any) => state.filters.filters); // Selected filters
 
-interface FiltersProps {
-  cars: Car[];
-}
-
-const Filters: React.FC<FiltersProps> = ({ cars }) => {
   const [makes, setMakes] = useState<string[]>([]);
   const [models, setModels] = useState<string[]>([]);
-  const [selectedMake, setSelectedMake] = useState<string>('');
-  const [selectedModel, setSelectedModel] = useState<string>('');
 
-  // Set makes from cars data
   useEffect(() => {
-    const uniqueMakes = Array.from(new Set(cars.map(car => car.make)));
+    // Populate makes based on available car data
+    const uniqueMakes = Array.from(new Set(cars.map((car: any) => car.make)));
     setMakes(uniqueMakes);
   }, [cars]);
 
-  // Set models based on selected make
   useEffect(() => {
-    const filteredModels = cars.filter(car => car.make === selectedMake).map(car => car.model);
+    // Populate models based on selected make
+    const filteredModels = cars
+      .filter((car: any) => car.make === filters.selectedMake)
+      .map((car: any) => car.model);
     setModels(Array.from(new Set(filteredModels)));
-  }, [selectedMake, cars]);
+  }, [filters.selectedMake, cars]);
+
+  const handleMakeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    dispatch(setFilters({ ...filters, selectedMake: e.target.value }));
+  };
+
+  const handleModelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    dispatch(setFilters({ ...filters, selectedModel: e.target.value }));
+  };
+
+  const handleReset = () => {
+    dispatch(resetFilters()); // Reset filters to initial state
+  };
 
   return (
-    <div className="w-full h-full lg:max-h-[calc(90vh-3rem)] md:max-h-[calc(90vh-3rem)] p-10 bg-gray-100 border-r mt-3 rounded-3xl">
+    <div className="dark:text-gray-100 dark:bg-gray-800 dark:border-white w-full
+     h-full lg:max-h-[calc(90vh-2rem)] md:max-h-[calc(90vh-3rem)] p-10 bg-gray-100
+      border mt-3 rounded-3xl">
       <div className="flex justify-between">
         <h2 className="text-2xl font-bold mb-4">Filters</h2>
-        <span className="text-sm text-blue-500 justify-end font-bold mb-4 mt-1">Reset</span>
+        <span
+          className="text-sm text-blue-500 justify-end font-bold mb-4 mt-1"
+          onClick={handleReset}
+        >
+          Reset
+        </span>
       </div>
-      <div className="grid gap-4">
-        {/* Brand Filter */}
-        <div className="flex justify-evenly gap-5">
-          <select
-            id="brand"
-            className="w-full border rounded px-2 py-4 rounded-3xl bg-white shadow-md"
-            value={selectedMake}
-            onChange={(e) => setSelectedMake(e.target.value)}
-          >
-            <option value="">Select Make</option>
-            {makes.map((make, index) => (
-              <option key={index} value={make}>
-                {make}
-              </option>
-            ))}
-          </select>
 
-          <select
-            id="model"
-            className="w-full border rounded px-2 py-4 rounded-3xl bg-white shadow-md"
-            value={selectedModel}
-            onChange={(e) => setSelectedModel(e.target.value)}
-            disabled={!selectedMake}
-          >
-            <option value="">Select Model</option>
-            {models.map((model, index) => (
-              <option key={index} value={model}>
-                {model}
-              </option>
-            ))}
-          </select>
+      <div className="grid gap-4">
+      <div className="flex justify-evenly gap-5">
+        {/* Make Filter */}
+        <select
+          id="make"
+          className=" dark:bg-gray-800 w-full border rounded px-2 py-4 rounded-3xl bg-white shadow-md"
+          value={filters.selectedMake}
+          onChange={handleMakeChange}
+        >
+          <option value="">Select Make</option>
+          {makes.map((make, index) => (
+            <option key={index} value={make}>
+              {make}
+            </option>
+          ))}
+        </select>
+
+        {/* Model Filter */}
+        <select
+          id="model"
+          className="dark:bg-gray-800 w-full border rounded px-2 py-4 rounded-3xl bg-white shadow-md"
+          value={filters.selectedModel}
+          onChange={handleModelChange}
+          disabled={!filters.selectedMake}
+        >
+          <option value="">Select Model</option>
+          {models.map((model, index) => (
+            <option key={index} value={model}>
+              {model}
+            </option>
+          ))}
+        </select>
         </div>
+        </div>
+      
 
         {/* Other Filters */}
         <div className='items-center'>
@@ -149,9 +163,9 @@ const Filters: React.FC<FiltersProps> = ({ cars }) => {
   <div class="mb-4">
     <label class="block text-muted-foreground mb-2 font-bold">Rental type</label>
     <div class="flex space-x-2 ">
-  <button class="bg-white text-dark px-4 py-2 rounded-lg shadow-md button-active-focus">Any</button>
-  <button class="bg-white text-dark px-4 py-2 rounded-lg shadow-md button-active-focus">Per day</button>
-  <button class="bg-white text-dark px-4 py-2 rounded-lg shadow-md button-active-focus">Per hour</button>
+  <button class="dark:text-gray-800 bg-white text-dark px-4 py-2 rounded-lg shadow-md button-active-focus">Any</button>
+  <button class="dark:text-gray-800 bg-white text-dark px-4 py-2 rounded-lg shadow-md button-active-focus">Per day</button>
+  <button class="dark:text-gray-800 bg-white text-dark px-4 py-2 rounded-lg shadow-md button-active-focus">Per hour</button>
 </div>
 
   </div>
@@ -169,7 +183,7 @@ const Filters: React.FC<FiltersProps> = ({ cars }) => {
 </div>
 <a href="#" class="text-accent text-center">All insurance</a>
       </div>
-    </div>
+
   );
 };
 

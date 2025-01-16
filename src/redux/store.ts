@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-import carsReducer from './carsSlice.ts'; 
-import selectedCarReducer from './selectedCarSlice.ts'; 
+import carsReducer from './carsSlice.ts';  // This will still manage your car data
+import selectedCarReducer from './selectedCarSlice.ts';  // If you are using this for selected car info
+import filterReducer from './filterSlice.ts';  // New filterSlice for managing filters
 
 const store = configureStore({
   reducer: {
-    cars: carsReducer,
-    selectedCar: selectedCarReducer, 
+    cars: carsReducer,            // Keeps car data
+    selectedCar: selectedCarReducer, // Optional if you are using selected car info
+    filters: filterReducer,          // Manages filter state
   },
 });
 
