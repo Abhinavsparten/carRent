@@ -9,6 +9,7 @@ const Filters: React.FC = () => {
 
   const [makes, setMakes] = useState<string[]>([]);
   const [models, setModels] = useState<string[]>([]);
+  const [loadingModels, setLoadingModels] = useState(false);
 
   useEffect(() => {
     // Populate makes based on available car data
@@ -17,20 +18,30 @@ const Filters: React.FC = () => {
   }, [cars]);
 
   useEffect(() => {
-    // Populate models based on selected make
-    const filteredModels = cars
-      .filter((car: any) => car.make === filters.selectedMake)
-      .map((car: any) => car.model);
-    setModels(Array.from(new Set(filteredModels)));
+    if (filters.selectedMake) {
+      setLoadingModels(true);
+      const filteredModels = cars
+        .filter((car: any) => car.make === filters.selectedMake)
+        .map((car: any) => car.model);
+      setModels(Array.from(new Set(filteredModels)));
+      setLoadingModels(false);
+    } else {
+      setModels([]);
+    }
   }, [filters.selectedMake, cars]);
 
   const handleMakeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    dispatch(setFilters({ ...filters, selectedMake: e.target.value }));
+    const selectedMake = e.target.value;
+    dispatch(setFilters({ ...filters, selectedMake })); // Update Redux state
+    console.log('Selected Make:', selectedMake); // Debugging
   };
-
+  
   const handleModelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    dispatch(setFilters({ ...filters, selectedModel: e.target.value }));
+    const selectedModel = e.target.value;
+    dispatch(setFilters({ ...filters, selectedModel })); // Update Redux state
+    console.log('Selected Model:', selectedModel); // Debugging
   };
+  
 
   const handleReset = () => {
     dispatch(resetFilters()); // Reset filters to initial state
@@ -43,7 +54,7 @@ const Filters: React.FC = () => {
       <div className="flex justify-between">
         <h2 className="text-2xl font-bold mb-4">Filters</h2>
         <span
-          className="text-sm text-blue-500 justify-end font-bold mb-4 mt-1"
+          className="text-sm text-blue-500 justify-end font-bold mb-4 mt-1 cursor-pointer"
           onClick={handleReset}
         >
           Reset
@@ -181,7 +192,7 @@ const Filters: React.FC = () => {
     </div>
   </div>
 </div>
-<a href="#" class="text-accent text-center">All insurance</a>
+<a href="#" class="flex justify-center">All insurance</a>
       </div>
 
   );

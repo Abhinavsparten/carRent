@@ -23,7 +23,7 @@ const Card: React.FC<CarCardProps> = ({ id, name, model,make, year, price, isAva
   };
 
   return (
-    <div className="border relative rounded-3xl p-4 bg-white dark:bg-gray-800" onClick={handleClick}>
+    <div className="border relative rounded-3xl p-4 bg-white dark:bg-gray-800 cursor-pointer" onClick={handleClick}>
       <img 
         src={image} 
         alt={`${make} ${model}`} 
