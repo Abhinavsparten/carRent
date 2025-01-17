@@ -48,7 +48,7 @@ const CarBookingContainer: React.FC<CarBookingContainerProps> = ({ onBack }) => 
   };
 
   return (
-    <div className="dark:text-gray-100 dark:bg-gray-800 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8 p-4 bg-white 
+    <div className="dark:text-gray-100 h-full dark:bg-gray-800 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8 p-4 bg-white 
     rounded-lg lg:px-5 px-1">
 
       {/* Left Section */}

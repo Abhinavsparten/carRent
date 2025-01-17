@@ -35,7 +35,7 @@ const CarListings: React.FC<CarListingsProps> = ({ cars, onCardClick }) => {
   });
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 overflow-y-scroll max-h-[calc(90vh-3rem)]">
+    <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4 overflow-y-scroll max-h-[calc(90vh-3rem)]">
       {filteredCars.length > 0 ? (
         filteredCars.map((car, index) => (
           <div key={index}>
